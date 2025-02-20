@@ -244,13 +244,19 @@ public class SwingApp extends JFrame {
                     employeeRepository.delete(empleadoId);
 
                     // Actualizar la tabla de empleados en la interfaz
-                    refreshEmployeeTable();
+                    refreshEmployeeTable(null, null, null, null, null);
+
+                    // Mostrar mensaje de confirmación
+                    JOptionPane.showMessageDialog(this, "Empleado eliminado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Ingrese un valor numérico válido para el ID del empleado", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Error al actualizar la tabla de empleados", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
+
 
     private void refreshEmployeeTable() {
     }
